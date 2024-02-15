@@ -1,0 +1,286 @@
+*{
+    box-sizing: border-box;
+    font-family: YuGothic, "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6em;
+}
+
+/*-----------------------------
+/*　メインエリアのスタイル
+------------------------------*/
+
+main {
+    width: 100rem; /* 幅1000px */
+    margin: auto;/* 中央寄せ */
+    padding-bottom: 10rem; /* 下内余白100px */
+}
+
+/*-----------------------------
+/*　セクション（内共通）のスタイル
+------------------------------*/
+
+section {
+    position: relative; /* 子要素のpositionの基準 */
+    display: flex; /* 子要素をフレックス */
+    flex-wrap: wrap; /* フレックス内で折り返す */
+    margin-top: 8rem; /* 上外余白80px */
+}
+
+/***  背景矩形  ***/
+section::before {
+    content: ""; /* HTMLの要素内容は空 */
+    position: absolute; /* 絶対配置 */
+    top: 4rem; /* 上から40px */
+    z-index: -1; /* 重なり順を背面に */
+    width: 70rem; /* 幅700px */
+    height: 47.6rem; /* 高さ476px */
+}
+
+/***  セクション（２つ目以降）  ***/
+section:nth-of-type(n + 2) {
+    margin-top: 20rem; /* 上外余白：200px */
+}
+
+/***  商品名  ***/
+section h2 {
+    color: #fff; /* 文字色：白 */
+    -webkit-text-stroke: 2px #212121; /* 袋文字化 */
+    font-size: 9rem; /* 級数：90px */
+    line-height: 1; /* 行高：一文字分 */
+    position: relative; /* 子要素のpositionの基準 */
+    margin: auto;
+}
+
+/***  商品名内改行  ***/
+section h2 .br {
+    display: block;
+}
+
+/***  英語表記  ***/
+section h2 .en {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.8rem;
+    letter-spacing: .1em; /* 文字間：0.1字分 */
+    border-left: 2px solid #212121;
+    writing-mode: vertical-rl; /* 文字を縦書きに */
+}
+
+/***  商品画像（一枚目）  ***/
+section > img {
+    width: 60%; /* 幅：（ssectionの）60% */
+    margin-bottom: 4rem; /* 下外余白40px */
+}
+
+/*-----------------------------
+/*　商品コピー
+------------------------------*/
+
+.copy {
+    top: -3em; /*  */
+    position: absolute;
+    z-index: 1;
+    writing-mode: vertical-rl;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 2;
+}
+
+/*-----------------------------
+/*　商品説明
+------------------------------*/
+
+.desc {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.desc p {
+    margin: auto;
+    line-height: 2;
+}
+
+/***  「詳しく見る」ボタン  ***/
+.desc a {
+    border: 2px solid #212121;
+    letter-spacing: .25em;
+    padding: .5em 3em;
+    color: black;
+    font-weight: bold;
+    align-self: flex-start;
+    text-decoration: none;
+}
+.desc a:hover {
+    opacity: 0.6;
+}
+
+/*-----------------------------
+/*　商品画像（２・３枚目）
+------------------------------*/
+
+.images {
+    width: 52%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.images img {
+    width: 48%;
+}
+
+/*=============================
+*/
+
+/*     偶数/奇数番目の商品スタイル
+*/
+
+/*===========================*/
+
+/*-----------------------------
+/*　奇数番目
+------------------------------*/
+/***  背景矩形  ***/
+section:nth-of-type(odd)::before {
+    right: 4rem;
+}
+
+/***  商品名  ***/
+section:nth-of-type(odd) h2 {
+    order: 2;
+    writing-mode: vertical-rl;
+    padding-right: .2em;
+}
+
+/***  商品画像（一枚目）  ***/
+section:nth-of-type(odd) > img {
+    order: 1;
+}
+
+/***  商品コピー  ***/
+section:nth-of-type(odd) .copy {
+    left: 2em;
+}
+
+/***  商品説明  ***/
+section:nth-of-type(odd) .desc {
+    order: 3;
+}
+
+/***  商品画像（2,3枚目）  ***/
+section:nth-of-type(odd) .images {
+    order: 4;
+    margin-left: auto;
+}
+
+/*-----------------------------
+/*　偶数番目
+------------------------------*/
+/***  背景矩形  ***/
+section:nth-of-type(even)::before {
+    left: 4rem;
+}
+
+/***  商品名  ***/
+section:nth-of-type(even) h2 {
+    order: 1;
+}
+
+/***  商品画像（一枚目）  ***/
+section:nth-of-type(even) > img {
+    order: 2;
+}
+
+/***  商品コピー  ***/
+section:nth-of-type(even) .copy {
+    right: 2em;
+}
+
+/***  商品説明  ***/
+section:nth-of-type(even) .desc {
+    order: 4;
+}
+
+/***  商品画像（２・３枚目）  ***/
+section:nth-of-type(even) .images {
+    order: 3;
+    margin-right: auto;
+}
+
+/*=============================
+*/
+
+/*     商品毎のスタイル
+*/
+
+/*===========================*/
+
+/*-----------------------------
+/*　パフェ
+------------------------------*/
+/***  背景矩形  ***/
+#parfait::before {
+    background: #fad1d3;
+}
+
+/***  商品コピーの背景色  ***/
+#parfait .copy span {
+    background: #fad1d3;
+}
+
+/*-----------------------------
+/*　パンケーキ
+------------------------------*/
+/***  背景矩形  ***/
+#pancake::before {
+    background: #e0ddd6;
+}
+
+/***  商品名内改行  ***/
+#pancake h2 .br {
+    margin-left: .5em;
+}
+
+/***  商品コピーの背景色  ***/
+#pancake .copy span {
+    background: #e0ddd6;
+}
+
+/*-----------------------------
+/*　チーズケーキ
+------------------------------*/
+/***  背景矩形  ***/
+#cheesecake::before {
+    background: #ffe8a2;
+}
+
+/***  商品名内改行  ***/
+#cheesecake h2 .br {
+    margin-top: .5em;
+}
+
+/***  商品コピーの背景色  ***/
+#cheesecake .copy span {
+    background: #ffe8a2;
+}
+
+/*-----------------------------
+/*　人気商品
+------------------------------*/
+/***  背景矩形  ***/
+#popular::before {
+    background: #def2e8;
+}
+
+/***  商品コピーの背景色  ***/
+#popular .copy span {
+    background: #def2e8;
+}
